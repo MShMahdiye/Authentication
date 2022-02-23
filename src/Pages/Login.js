@@ -1,14 +1,16 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
+
 import { useNavigate,useLocation } from "react-router-dom";
 import { authContext } from "../Context";
-import {useAuth} from '../Context'
+// import { authContext } from '../Context'
+
 
 const Login = () => {
   const navigate = useNavigate();
   const {state} = useLocation();
-  // const {login} = useContext(authContext);
-  // const {login} = useContext(useAuth);
-  const {login} = useAuth();
+
+  const { login } = useContext(authContext);
+  
   const handleLogin = () => {
     login().then(
       () => {
@@ -21,7 +23,7 @@ const Login = () => {
   // console.log(state)
   // console.log(state.path)
   console.log("login :: ",authContext);
-  console.log(useAuth)
+
   return(
     <div>
       <h1>login</h1>

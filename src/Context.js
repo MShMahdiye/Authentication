@@ -2,9 +2,18 @@ import { createContext,useState } from "react";
 
 export const authContext = createContext();
 
-export function useAuth(){
-  const [authed,setAuthed] = useState(false);
-  return {
+// export function useAuth(){
+//   const [authed, setAuthed] = useState(false);
+  
+//   return {
+
+//   }
+// }
+
+export default ({ children }) => {
+  const [authed, setAuthed] = useState(false);
+  
+  const auth = {
     authed,
     login(){
       return new Promise(
@@ -23,10 +32,7 @@ export function useAuth(){
       )
     }
   }
-}
-
-export default ({children}) => {
-  const auth = useAuth();
+  
   return(
     <authContext.Provider value={auth}>
       {children}
